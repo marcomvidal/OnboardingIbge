@@ -32,8 +32,12 @@ class Service
       )}
   end
 
-  def name_by_decades(name)
-    to_object(@connection.get("#{URN_NAMES}/#{name}"))
+  def name_on_decades(name)
+    (to_object(@connection.get("#{URN_NAMES}/#{name}")).first.res).
+      map { |d| OpenStruct.new({ 
+        decade: d.periodo.tr('[', '').tr(']', ''),
+        frequency: d.frequencia 
+      })}
   end
 
   private
