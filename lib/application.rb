@@ -1,17 +1,19 @@
-require_relative 'service'
-require_relative 'view'
+require_relative 'controllers/home_controller'
+require_relative 'controllers/states_controller'
+require_relative 'controllers/cities_controller'
 
 class Application
-
   def initialize
-    @service = Service.new
-    @view = View.new
+    @home = HomeController.new
+    @states = StatesController.new
+    @cities = CitiesController.new
   end
 
   def main
-    @view.menu
-    @view.by_state @service.get_all_states
+    @home.menu
+    @states.all_names
   end
 end
 
-Application.new.main()
+$LOAD_PATH << __dir__
+Application.new.main
