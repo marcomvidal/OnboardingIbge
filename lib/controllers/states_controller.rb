@@ -7,7 +7,7 @@ class StatesController
     @view = StatesView.new
   end
 
-  def all_names
+  def index
     states = @service.all_states
     @view.list_all states
     state = safely_choose states
