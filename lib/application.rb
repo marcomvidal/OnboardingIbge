@@ -13,17 +13,24 @@ class Application
 
   def self.options
     [
-      { id: 1, description: 'Pela Unidade Federativa (UF)' },
-      { id: 2, description: 'Pelo nome da cidade' },
-      { id: 3, description: 'Pelo ano' }
+      { id: 1, description: 'Ranking de nomes por Unidade Federativa (UF)' },
+      { id: 2, description: 'Ranking de nomes por cidade' },
+      { id: 3, description: 'Frequência do nome ao longo dos anos' }
     ]
   end
 
   def main
     case @home.menu
-    when Application.options[0][:id]; @states.index
-    when Application.options[1][:id]; @cities.index
-    when Application.options[2][:id]; @years.index
+    when Application.options[0][:id]
+      state = @states.index
+      @states.show state
+    when Application.options[1][:id]
+      state = @states.index
+      city = @cities.index state
+      @cities.show city
+    when Application.options[2][:id]
+      names = @years.index
+      @years.show names
     end
   end
 end

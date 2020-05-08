@@ -1,38 +1,24 @@
+require_relative 'base_controller'
 require_relative '../service'
 require_relative '../views/states_view'
+require_relative '../presenters/report'
 
-class StatesController
+class StatesController < BaseController
   def initialize
     @service = Service.new
     @view = StatesView.new
   end
 
   def index
+    @view.loading_message 'UFs'
     states = @service.all_states
     @view.list_all states
-    state = safely_choose states
-
-    table_types(state).each do |c|
-      @view.list_names c[:title], @service.names_by(c[:filters])
-    end
+    safely_choose states, lambda { @view.choose states }
   end
 
-  private
-
-  def safely_choose(states)
-    begin
-      @view.choose states
-    rescue RangeError => error
-      puts error
-      safely_choose states
+  def show(state)
+    Report.types(place: state).each do |state|
+      @view.list_names(state[:title], @service.names_ranking(state[:filters]))
     end
-  end
-
-  def table_types(state)
-    [
-      { title: 'Todos', filters: { localidade: state.id } },
-      { title: 'Homens', filters: { sexo: 'M', localidade: state.id } },
-      { title: 'Mulheres', filters: { sexo: 'F', localidade: state.id } }
-    ]
   end
 end

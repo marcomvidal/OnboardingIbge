@@ -1,6 +1,7 @@
+require_relative 'base_controller'
 require_relative '../views/home_view'
 
-class HomeController
+class HomeController < BaseController
   attr_accessor :error
 
   def initialize
@@ -9,18 +10,9 @@ class HomeController
 
   def menu
     @view.banner
-    @view.show_menu @error
-    safely_choose
-  end
+    options = Application.options
 
-  private
-
-  def safely_choose
-    begin
-      @view.select_option
-    rescue Exception => error
-      @error = error
-      menu
-    end
+    @view.show_menu options, @error
+    safely_choose options, lambda { @view.select_option options }
   end
 end
