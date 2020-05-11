@@ -6,7 +6,7 @@ class StatesView < BaseView
     puts "\nSelecione o estado desejado pela sigla UF:"
 
     states.
-      sort_by(&:sigla).
+      sort_by(&:acronym).
       each { |state| print "#{state.acronym}\t" }
   end
 
