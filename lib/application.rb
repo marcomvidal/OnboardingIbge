@@ -12,28 +12,28 @@ class Application
   end
 
   def self.options
-    [
-      { id: 1, description: 'Ranking de nomes por Unidade Federativa (UF)' },
-      { id: 2, description: 'Ranking de nomes por cidade' },
-      { id: 3, description: 'Frequência do nome ao longo dos anos' },
-      { id: 4, description: 'Sair' }
-    ]
+    {
+      1 => { description: 'Ranking de nomes por Unidade Federativa (UF)' },
+      2 => { description: 'Ranking de nomes por cidade' },
+      3 => { description: 'Frequência do nome ao longo dos anos' },
+      4 => { description: 'Sair' }
+    }
   end
 
   def main
     while true
       case @home.menu
-      when Application.options[0][:id]
+      when Application.options.keys[0]
         state = @states.index
         @states.show state
-      when Application.options[1][:id]
+      when Application.options.keys[1]
         state = @states.index
         city = @cities.index state
         @cities.show city
-      when Application.options[2][:id]
+      when Application.options.keys[2]
         names = @years.index
         @years.show names
-      when Application.options[3][:id]
+      when Application.options.keys[3]
         break
       end
     end
