@@ -20,5 +20,7 @@ class StatesController < BaseController
     Report.types(place: state).each do |state|
       @view.list_names(state[:title], @service.names_ranking(state[:filters]))
     end
+
+    @view.press_a_key_to_continue
   end
 end

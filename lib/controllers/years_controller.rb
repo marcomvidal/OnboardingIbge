@@ -15,7 +15,11 @@ class YearsController
     names.each do |name|
       list_decades name, @service.name_on_decades(name)
     end
+
+    @view.press_a_key_to_continue
   end
+
+  private
 
   def list_decades(name, history)
     table = Terminal::Table.new do |t|

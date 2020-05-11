@@ -17,5 +17,7 @@ class CitiesController < BaseController
     Report.types(place: city).each do |name|
       @view.list_names(name[:title], @service.names_ranking(name[:filters]))
     end
+
+    @view.press_a_key_to_continue
   end
 end

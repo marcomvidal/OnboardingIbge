@@ -4,7 +4,7 @@ require_relative 'base_view'
 class YearsView < BaseView
   def choose
     print "\nNomes desejados, separados por vírgula: "
-    split_names read_sanitized
+    split_names remove_accentuation(read_sanitized)
   end
 
   private
