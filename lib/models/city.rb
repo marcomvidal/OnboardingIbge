@@ -1,4 +1,6 @@
-class City
+require_relative 'model'
+
+class City < Model
   attr_accessor :id, :name, :state_id
 
   def initialize(id:, name:, state_id:)
