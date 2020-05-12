@@ -1,6 +1,4 @@
-require_relative 'model'
-
-class Name < Model
+class Name
   attr_accessor :id, :name, :rate, :ranking
 
   def initialize(id:, name:, rate:, ranking:)

@@ -7,7 +7,7 @@ class YearsController
     @view = YearsView.new
   end
 
-  def index
+  def select
     @view.choose
   end
 

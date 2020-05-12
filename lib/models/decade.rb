@@ -1,6 +1,4 @@
-require_relative 'model'
-
-class Decade < Model
+class Decade
   attr_accessor :decade, :frequency
 
   def initialize(decade:, frequency:)

@@ -1,3 +1,5 @@
+require 'sqlite3'
+require_relative 'database'
 require_relative 'controllers/home_controller'
 require_relative 'controllers/states_controller'
 require_relative 'controllers/cities_controller'
@@ -21,22 +23,27 @@ class Application
   end
 
   def main
+    prepare_database
+
     while true
       case @home.menu
-      when Application.options.keys[0]
-        state = @states.index
-        @states.show state
+      when Application.options.keys[0]; @states.show(@states.select)
       when Application.options.keys[1]
-        state = @states.index
-        city = @cities.index state
-        @cities.show city
-      when Application.options.keys[2]
-        names = @years.index
-        @years.show names
-      when Application.options.keys[3]
-        break
+        @cities.show(@cities.select(@states.select))
+      when Application.options.keys[2]; @years.show(@years.select)
+      when Application.options.keys[3]; break
       end
     end
+
+  end
+
+  private
+
+  def prepare_database
+    Database.start
+    
+    [@states, @cities].
+      each { |entity| entity.populate } unless Database.created?
   end
 end
 
