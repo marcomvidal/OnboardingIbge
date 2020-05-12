@@ -11,11 +11,15 @@ class CitiesView < BaseView
     raise RangeError.new 'A cidade digitada não existe. Escolha uma existente.'
   end
 
-  def list_names(criteria, names)
+  def list_names(criteria, names, population)
     table = Terminal::Table.new do |t|
-      t.add_row ['Ranking', 'Nome', 'Frequência']
+      t.add_row ['Ranking', 'Nome', 'Frequência', 'Percentual']
       t.add_separator
-      names.each { |name| t.add_row [name.ranking, name.name, name.rate] }
+      names.each { |name| 
+        t.add_row [
+          name.ranking, name.name, name.rate, population.percentual(name.rate)
+        ]
+      }
     end
 
     puts "\n#{criteria}\n#{table}"
