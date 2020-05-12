@@ -38,7 +38,7 @@ apropriadamente.<br>
 Recursos que sejam comuns a todos os controllers devem ser declarados em 
 `BaseController`.
 
-## View
+## Views
 Realizam os tratamentos apropriados para que as entradas do usuários direcionem
 para as funcionalidades corretas. Devem ser cadastrados como dependências nos
 controllers correspondentes.<br>
