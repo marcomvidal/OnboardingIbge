@@ -58,7 +58,7 @@ automaticamente adicionadas visualmente ao menu, localizado em `HomeView`. Para
 que uma nova opção tenha funcionalidades, o método correspondente do controller
 a ser adicionado deve ser inscrito em no switch case do método `main()`.<br>
 Também dispara a preparação do banco de dados. Se não estiver populado, terá os
-métodos de criação localizados nos controllers acionados, que acionarão a REST
+métodos de criação localizados nos controllers acionados, que acessarão a REST
 API para obter informações necessárias.<br>
 Neste projeto, apenas `City` e `State` são persistidos.
 
