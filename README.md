@@ -84,3 +84,9 @@ Obtém dados do IBGE via HTTPS que são instanciados como objetos presentes no
 - Carregamento e operações de arquivos
 - Bancos de dados relacionais
 - Integração com APIs REST
+
+## Screenshots
+* [Listagem de opções](https://raw.githubusercontent.com/marcomvidal/OnboardingIbge/master/screenshot_listagem.png)
+* [Nomes mais comuns por estado](https://raw.githubusercontent.com/marcomvidal/OnboardingIbge/master/screenshot_nomes_por_uf.png)
+* [Nomes mais comuns por cidade](https://raw.githubusercontent.com/marcomvidal/OnboardingIbge/master/screenshot_nomes_por_cidade.png)
+* [Frequência de nomes no decorrer de décadas](https://raw.githubusercontent.com/marcomvidal/OnboardingIbge/master/screenshot_nomes_por_decada.png)
